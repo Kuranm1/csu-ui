@@ -1,0 +1,80 @@
+<div class="card mx-auto" style="max-width: 1500px;">
+    <div class="card-header">
+        <h1>Create new warehouse</h1>
+    </div>
+
+    <div class="card-body">
+        <form class="form" (ngSubmit)="saveWarehouse()">
+            <div class="mb-3">
+                <label class="form-label">
+                    Name:
+                    <input class="form-control" [(ngModel)]="warehouseName" name="name" required>
+                  </label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">
+                    Description:
+                    <input class="form-control" [(ngModel)]="warehouseDescription" name="description" required>
+                  </label>
+            </div>
+
+            <!-- items -->
+             <div class="card mx-auto">
+                <div class="card-header">
+                    Items
+                </div>
+                <div class="card-body">
+                    <form class="form" (ngSubmit)="saveItem()">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Desctiopn</th>
+                                    <th>Quantity</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of items">
+                                    <td>
+                                        {{item.itemName}}
+                                    </td>
+                                    <td>
+                                        {{item.itemDescription}}
+                               
+                                    <td>
+                                        {{item.quantity}}
+                                    </td>
+                                    <td>
+                                        <a href="#" class="text-danger" (click)="removeItem($event,item.itemName)"> remove </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input class="form-control" [(ngModel)]="itemName" name="itemName" required>
+                                    </td>
+                                    <td>
+                                        <input class="form-control" [(ngModel)]="itemDescription" name="itemDescription" required>
+                               
+                                    <td>
+                                        <input class="form-control" [(ngModel)]="quantity" name="quantity" required>
+                                    </td>
+                                    <td>
+                                    
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-success m-1" type="submit">Add item</button>
+                    </form>
+    
+                </div>
+             </div>
+
+            <button class="btn btn-success m-1" type="submit">Save</button>
+            <button class="btn btn-warnning m-1" type="button" (click)="resetForm()">Reset</button>
+        </form>
+        
+    </div>
+
+</div>

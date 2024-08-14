@@ -1,0 +1,54 @@
+
+  
+
+<div class="page page-center">
+  <div class="container container-tight py-4">
+    <div class="card card-md">
+      <h2 class="card-header">Login</h2>
+    
+      <form (ngSubmit)="login()" #loginForm="ngForm" class="card-body">
+        <!-- Username Field -->
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            required
+            [(ngModel)]="username"
+            name="username"
+            #usernameInput="ngModel"
+          />
+          <div *ngIf="usernameInput.invalid && usernameInput.touched" class="text-danger">
+            Username is required
+          </div>
+        </div>
+    
+        <!-- Password Field -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            required
+            [(ngModel)]="password"
+            name="password"
+            #passwordInput="ngModel"
+          />
+          <div *ngIf="passwordInput.invalid && passwordInput.touched" class="text-danger">
+            Password is required
+          </div>
+        </div>
+    
+        <!-- Submit Button -->
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
+            Login
+          </button>
+        </div>
+      </form>
+    
+  </div>
+  </div>
+</div>

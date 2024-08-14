@@ -1,0 +1,48 @@
+<div class="card mx-auto" style="max-width: 1500px;">
+    <div class="card-header">
+        <h1>Documents</h1>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-vcenter">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Subject</th>
+                  <th>Created By</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th></th>
+                  <th *ngIf="isManger"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let document of documents">
+                  <td>{{ document.documentName }}</td>
+                  <td>{{ document.documentSubject }}</td>
+                  <td>{{ document.createdBy }}</td>
+                  <td>{{ document.status }}</td>
+                  <td>{{ document.createdDateTime }}</td>
+                  <td>
+                    <button type="button" class="btn btn-danger" (click)=delete(document.id)>
+                      Delete
+                    </button>
+                  </td>
+                  <td *ngIf="isManger && (document.status === 'pending' ||document.status === null ) ">
+                    <button type="button" class="btn btn-info" (click)=approve(document.id)>
+                      Approve
+                    </button>
+                    <button type="button" class="btn btn-warning" (click)=decline(document.id)>
+                      Decline
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+
+    <div class="card-footer">
+      <a class="btn btn-success" href="supply-document/add">New Document</a>
+    </div>
+</div>

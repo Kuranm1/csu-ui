@@ -1,0 +1,27 @@
+<div class="card mx-auto" style="max-width: 1500px;">
+    <div class="card-header">
+        <h1>Create new document</h1>
+    </div>
+
+    <div class="card-body">
+        <form class="form" (ngSubmit)="saveDocument()">
+            <div class="mb-3">
+                <label class="form-label">
+                    Name:
+                    <input class="form-control" [(ngModel)]="documentName" name="name" required>
+                  </label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">
+                    Subject:
+                    <input class="form-control" [(ngModel)]="documentSubject" name="subject" required>
+                  </label>
+            </div>
+
+            <button class="btn btn-success m-1" type="submit">Save</button>
+            <button class="btn btn-warnning m-1" type="button" (click)="resetForm()">Reset</button>
+        </form>
+        
+    </div>
+
+</div>

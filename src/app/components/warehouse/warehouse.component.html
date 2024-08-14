@@ -1,0 +1,88 @@
+
+<div  class="card mx-auto" style="max-width: 1500px;"  *ngIf = "!isManger">
+  <div class="card-body">
+    <div class="alert alert-danger" role="alert">
+      This user is not a manger.
+    </div>
+  </div>
+
+</div>
+
+<div class="card mx-auto" style="max-width: 1500px;"  *ngIf = "isManger">
+    <div class="card-header">
+        <h1>Warehouses</h1>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-vcenter">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Created By</th>
+                  <th>Date</th>
+                  <th>Items</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let warehouse of warehouses">
+                  <td>{{ warehouse.warehouseName }}</td>
+                  <td>{{ warehouse.warehouseDescription }}</td>
+                  <td>{{ warehouse.createdBy }}</td>
+                  <td>{{ warehouse.createdDateTime }}</td>
+                  <td>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)=showModal(warehouse.id)>
+                      Items
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-danger" (click)=delete(warehouse.id)>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+
+    <div class="card-footer">
+      <a class="btn btn-success m-1" href="warehouse/add">New Warehouse</a>
+
+      <button class="btn btn-info m-1" (click)="export()"> Export</button>
+    </div>
+</div>
+
+<div class="modal" id="exampleModal" tabindex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Items</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <table class="table table-vcenter">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of items">
+                <td>{{ item.itemName }}</td>
+                <td>{{ item.itemDescription }}</td>
+                <td>{{ item.quantity }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
